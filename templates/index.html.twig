@@ -5,6 +5,7 @@
     <h1 class="text-center">Test algo</h1>
     <div class="container">
         <div class="container">
+            <h3>Affichage</h3>
             <p>```</p>
             {{ macro.renderLine(rawData) }}
             {% if result is not null %}
@@ -14,53 +15,56 @@
             {% endif %}
             <p>```</p>
         </div>
-        {{ form_start(form) }}
-            <div class="row">
-                <div class="col-md-4">
-                    {{form_row(form.first_character)}}
-                </div>
-                <div class="col-md-4">
-                    {{form_row(form.friendship_type)}}
-                </div>
-                <div class="col-md-4">
-                    {{form_row(form.second_character)}}
-                </div>
-            </div>
-
-            <div class="row col-md-4 mt-5">
-                <p class="col-md-4">Est-ce que</p> 
-                <div class="col-md-4">
-                    {{form_widget(form.character_to_test)}} 
-                </div>
-                <p class="col-md-4"> est mon ami(e) ? </p>
-            </div>
+        <div class="container">
+            <h3>Formulaire</h3>
             
-            <div class="btn-group mt-5">
-                {{form_row(form.submit)}}
-                {{form_row(form.clear)}}
-            </div>
-        {{ form_end(form)}}
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-4" id="FirstCharacter">
+                        {{form_row(form.first_character)}}
+                    </div>
+                    <div class="col-md-4">
+                        {{form_row(form.friendship_type)}}
+                    </div>
+                    <div class="col-md-4" id="SecondCaracter">
+                        {{form_row(form.second_character)}}
+                    </div>
+                </div>
+
+                <div class="row col-md-6 mt-5">
+                    <p class="col-md-2">Est-ce que</p> 
+                    <div class="col-md-6">
+                        {{form_widget(form.character_to_test)}} 
+                    </div>
+                    <p class="col-md-4"> est mon ami(e) ? </p>
+                </div>
+                
+                <div class="btn-group mt-5">
+                    {{form_row(form.submit)}}
+                    {{form_row(form.clear)}}
+                </div>
+            {{ form_end(form)}}
+        </div>
     </div>
 
-<!--
     <script>
         function changeFriendshipType(){
             let friendship_type = document.querySelector('[idToSelect="friendship_type"]').value;
             console.log(friendship_type);
-            switch (friendship_type){
+            switch (Number.parseInt(friendship_type)){
                 case 0:
-                    document.querySelector('[idToSelect="first_character"]').disabled = false;
-                    document.querySelector('[idToSelect="second_character"]').disabled = false;
+                    console.log("fdsfsdf");
+                    document.getElementById('FirstCharacter').style.display = 'block';
+                    document.getElementById('SecondCaracter').style.display = 'block';
                     break;
                 case 1:
-                    document.querySelector('[idToSelect="first_character"]').disabled = false;
-                    document.querySelector('[idToSelect="second_character"]').disabled = true;
+                    document.getElementById('FirstCharacter').style.display = 'block';
+                    document.getElementById('SecondCaracter').style.display = 'none';
                     break;
                 case 2:
-                    document.querySelector('[idToSelect="first_character"]').disabled = true;
-                    document.querySelector('[idToSelect="second_character"]').disabled = false;
+                    document.getElementById('FirstCharacter').style.display = 'none';
+                    document.getElementById('SecondCaracter').style.display = 'block';
             }
         }
     </script>
-    -->
 {% endblock %}

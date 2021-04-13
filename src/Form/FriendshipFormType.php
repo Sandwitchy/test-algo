@@ -15,6 +15,7 @@ class FriendshipFormType extends AbstractType
     const FRIENDSHIP_TYPE = "friendship_type";
     const FIRST_CHARACTER = "first_character";
     const SECOND_CHARACTER = "second_character";
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -52,6 +53,7 @@ class FriendshipFormType extends AbstractType
                 "label" => "test",
                 "attr" => [
                     "class" => "form-control",
+                    "placeholder" => "Nom de la personne"
                 ]
             ])
             ->add("submit", SubmitType::class, [
