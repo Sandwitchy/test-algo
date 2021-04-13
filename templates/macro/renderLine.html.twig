@@ -1,0 +1,13 @@
+{% macro renderLine(rawdatas) %}
+    {% for line in rawdatas %}
+        {% if line.friendship_type == 0 %}
+            <p>{{line.first_character}} est ami(e) avec {{line.second_character}}</p>
+        {% elseif line.friendship_type == 1 %}
+            <p>{{line.first_character}} est ami(e) avec moi </p>
+        {% else %}
+            <p>Je suis ami(e) avec {{line.second_character}}</p>
+        {% endif %}
+    {% else %}  
+        <p>Aucune ligne entrée pour le moment<P>
+    {% endfor %}
+{% endmacro %}

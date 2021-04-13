@@ -1,24 +1,43 @@
 <?php 
 
-namespace App\Generator;
+namespace App\Manager;
 
 use App\Form\FriendshipFormType;
 use App\Entity\Character;
 use App\Entity\Enum\FriendshipType;
 
 
-class CharacterCollectionGenerator {
+class CharacterCollectionManager {
 
-    public $charactersArray = array();
+    private $characterArray = array();
 
     public function __construct(){
         
     }
 
+    public function getCharacterArray() :array
+    {
+        return $this->characterArray;
+    }
 
-    public function addToCollection(array $datas){
+    public function setCharacterArray(array $charactersArray){
+        $this->characterArray = $charactersArray;
+    }
+
+    public function isMyFriend(string $name){
+        
+        $character = $this->getSpecificCharacter($name);
+        foreach($character->getCharacters() as $friend){
+            if($friend->getname() == 'Moi'){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function addToArray(array $datas){
         //init array if empty
-        if(empty($this->charactersArray)){
+        if(empty($this->characterArray)){
             $this->initCharacterArray();
         }
 

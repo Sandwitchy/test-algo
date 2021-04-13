@@ -27,7 +27,8 @@ class FriendshipFormType extends AbstractType
                 "label" => "Lien d'amitié",
                 "attr" => [
                     "class" => "form-control",
-                    "id" => "friendship_type"
+                    "idToSelect" => "friendship_type",
+                    "onchange" => "changeFriendshipType()"
                 ]
             ])
             ->add('first_character',TextType::class, [
@@ -35,7 +36,7 @@ class FriendshipFormType extends AbstractType
                 "label" => "Personne",
                 "attr" => [
                     "class" => "form-control",
-                    "id" => "first_character"
+                    "idToSelect" => "first_character"
                 ]
             ])
             ->add('second_character',TextType::class, [
@@ -43,13 +44,26 @@ class FriendshipFormType extends AbstractType
                 "label" => "2e personne",
                 "attr" => [
                     "class" => "form-control",
-                    "id" => "second_character"
+                    "idToSelect" => "second_character",
+                ]
+            ])
+            ->add("character_to_test", TextType::class, [
+                "required" => false,
+                "label" => "test",
+                "attr" => [
+                    "class" => "form-control",
                 ]
             ])
             ->add("submit", SubmitType::class, [
-                "label" => "Ajouter",
+                "label" => "Envoyer",
                 "attr" => [
                     "class" => "btn btn-primary mb-0 mt-auto btn-block"
+                ]
+            ])
+            ->add("clear", SubmitType::class, [
+                "label" => "Nettoyer cache",
+                "attr" => [
+                    "class" => "btn btn-danger mb-0 mt-auto btn-block"
                 ]
             ]);
         ;

@@ -1,8 +1,19 @@
 {% extends "base.html.twig" %}
+{% import "macro/renderLine.html.twig" as macro %}
 
 {% block body %}
     <h1 class="text-center">Test algo</h1>
     <div class="container">
+        <div class="container">
+            <p>```</p>
+            {{ macro.renderLine(rawData) }}
+            {% if result is not null %}
+                <p>---</p>
+                <p>Est ce que {{character_to_test}} est mon ami(e) ? </p>
+                <p>{% if result %} Oui {% else %} Non {% endif %}</p>
+            {% endif %}
+            <p>```</p>
+        </div>
         {{ form_start(form) }}
             <div class="row">
                 <div class="col-md-4">
@@ -15,8 +26,41 @@
                     {{form_row(form.second_character)}}
                 </div>
             </div>
-            <br>
-            {{form_row(form.submit)}}
+
+            <div class="row col-md-4 mt-5">
+                <p class="col-md-4">Est-ce que</p> 
+                <div class="col-md-4">
+                    {{form_widget(form.character_to_test)}} 
+                </div>
+                <p class="col-md-4"> est mon ami(e) ? </p>
+            </div>
+            
+            <div class="btn-group mt-5">
+                {{form_row(form.submit)}}
+                {{form_row(form.clear)}}
+            </div>
         {{ form_end(form)}}
     </div>
+
+<!--
+    <script>
+        function changeFriendshipType(){
+            let friendship_type = document.querySelector('[idToSelect="friendship_type"]').value;
+            console.log(friendship_type);
+            switch (friendship_type){
+                case 0:
+                    document.querySelector('[idToSelect="first_character"]').disabled = false;
+                    document.querySelector('[idToSelect="second_character"]').disabled = false;
+                    break;
+                case 1:
+                    document.querySelector('[idToSelect="first_character"]').disabled = false;
+                    document.querySelector('[idToSelect="second_character"]').disabled = true;
+                    break;
+                case 2:
+                    document.querySelector('[idToSelect="first_character"]').disabled = true;
+                    document.querySelector('[idToSelect="second_character"]').disabled = false;
+            }
+        }
+    </script>
+    -->
 {% endblock %}
