@@ -1,6 +1,6 @@
 # Test technique
 
-L'application est sous docker il faut donc démarrer les container avec 
+L'application est sous docker il faut donc démarrer le container avec 
 ```bash
 docker-compose up -d
 ```
