@@ -29,10 +29,6 @@ class Character
      */
     private $characters;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $friendshipType;
 
     public function __construct()
     {
@@ -76,18 +72,6 @@ class Character
     public function removeCharacter(self $character): self
     {
         $this->characters->removeElement($character);
-
-        return $this;
-    }
-
-    public function getFriendshipType(): ?int
-    {
-        return $this->friendshipType;
-    }
-
-    public function setFriendshipType(int $friendshipType): self
-    {
-        $this->friendshipType = $friendshipType;
 
         return $this;
     }

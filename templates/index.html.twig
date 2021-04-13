@@ -3,7 +3,6 @@
 {% block body %}
     <h1 class="text-center">Test algo</h1>
     <div class="container">
-
         {{ form_start(form) }}
             <div class="row">
                 <div class="col-md-4">
@@ -16,7 +15,8 @@
                     {{form_row(form.second_character)}}
                 </div>
             </div>
+            <br>
+            {{form_row(form.submit)}}
         {{ form_end(form)}}
-    
     </div>
 {% endblock %}

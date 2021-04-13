@@ -8,9 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Enum\FriendshipType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class FriendshipFormType extends AbstractType
 {
+    const FRIENDSHIP_TYPE = "friendship_type";
+    const FIRST_CHARACTER = "first_character";
+    const SECOND_CHARACTER = "second_character";
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -40,6 +44,12 @@ class FriendshipFormType extends AbstractType
                 "attr" => [
                     "class" => "form-control",
                     "id" => "second_character"
+                ]
+            ])
+            ->add("submit", SubmitType::class, [
+                "label" => "Ajouter",
+                "attr" => [
+                    "class" => "btn btn-primary mb-0 mt-auto btn-block"
                 ]
             ]);
         ;
